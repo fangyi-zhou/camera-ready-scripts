@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Reads a fls file (produced when using `-recorder` option, by default if you
 use `latexmk`), and finds the files that are used during compilation that are
 relative to the `fls` file.
