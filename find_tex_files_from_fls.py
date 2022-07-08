@@ -38,4 +38,4 @@ if __name__ == "__main__":
         fls = f.read().splitlines()
     input_files = input_files_from_fls(tex_dir, fls)
     files_to_zip = find_files_in_dir(tex_dir, input_files)
-    print(*list(sorted(files_to_zip)))
+    print(*list(sorted(files_to_zip)), sep="\n")
