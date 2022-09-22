@@ -55,7 +55,7 @@ function get_eptcs() {
   # Electronic Proceedings in Theoretical Computer Science
   # http://style.eptcs.org/
   EPTCS_URL="http://eptcs.web.cse.unsw.edu.au/eptcsstyle.zip"
-  EPTCS_FILES=(eptcs.cls breakurl.sty eptcs.bst)
+  EPTCS_FILES=(eptcs.cls eptcs.bst)
   download_file "$EPTCS_URL" "$TMP/eptcs.zip"
   unzip -j "$TMP/eptcs" "${EPTCS_FILES[@]}"
 }
