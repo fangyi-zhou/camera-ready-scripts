@@ -12,7 +12,7 @@ function check_installed() {
 
 function download_file() {
   # $1 is URL, $2 is output file name
-  curl -o "$2" -L "$1"
+  curl "${@:3}" -o "$2" -L "$1"
 }
 
 TMP=$(mktemp -d)
@@ -20,16 +20,16 @@ TMP=$(mktemp -d)
 function get_acm() {
   # ACM Templates
   # https://www.acm.org/publications/proceedings-template
-  ACM_URL="https://www.acm.org/binaries/content/assets/publications/consolidated-tex-template/acmart-primary.zip"
+  ACM_URL="https://portalparts.acm.org/hippo/latex_templates/acmart-primary.zip"
   ACM_FILES=(acmart-primary/acmart.cls acmart-primary/ACM-Reference-Format.bst)
-  download_file "$ACM_URL" "$TMP/acm.zip"
+  download_file "$ACM_URL" "$TMP/acm.zip" -H user-agent:fake
   unzip -j "$TMP/acm.zip" "${ACM_FILES[@]}"
 }
 
 function get_lncs() {
   # Springer LNCS
   # https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines
-  LNCS_URL="https://resource-cms.springernature.com/springer-cms/rest/v1/content/19238648/data/v4"
+  LNCS_URL="https://resource-cms.springernature.com/springer-cms/rest/v1/content/19238648/data/v6"
   LNCS_FILES=(llncs.cls splncs04.bst)
   download_file "$LNCS_URL" "$TMP/lncs.zip"
   unzip -j "$TMP/lncs.zip" "${LNCS_FILES[@]}"
