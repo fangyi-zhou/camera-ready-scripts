@@ -38,7 +38,7 @@ HASH=$(shasum <(echo "$CUR_DIR") | cut -f 1 -d ' ')
 DEST_DIR="/tmp/$DIR_NAME-$HASH"
 
 echo "Copying files to $REMOTE_HOST"
-rsync -az --progress --exclude=_build --exclude=main.pdf --exclude=main.fls "$1" "$REMOTE_HOST":"$DEST_DIR"
+rsync -az --progress --exclude=_build --exclude=main.pdf --exclude=main.fls --exclude=.git "$1" "$REMOTE_HOST":"$DEST_DIR"
 
 #shellcheck disable=SC2029
 ssh "$REMOTE_HOST" "cd $DEST_DIR && latexmk -pdf main"
